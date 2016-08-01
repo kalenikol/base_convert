@@ -1,9 +1,11 @@
 <?php
-include 'inc/config.inc.php';
+define('DB_HOST', 'localhost');
+define('DB_LOGIN', 'root');
+define('DB_PASSWORD', '');
+define('DB_NAME', 'items');
+
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-//    echo $_SERVER['REQUEST_METHOD'];
     $oldName = $_POST['name_1'];
-//    echo $oldName;
     $oldCode = $_POST['code_1'];
     $newName = $_POST['name_2'];
     $newCode = $_POST['code_2'];
@@ -13,7 +15,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $enabled = "y";
     }
     $e_link = $_POST['e_link'];
-    $sql = "INSERT INTO goods (name_1, code_1, name_2, code_2, enabled, link) VALUES ('$oldName', '$oldCode', '$newName', '$newCode', '$enabled', '$e_link');";
+    $category = $_POST['category'];
+    $link = mysqli_connect(DB_HOST, DB_LOGIN, DB_PASSWORD, DB_NAME);
+    $sql = "INSERT INTO items.goods (name_1, code_1, name_2, code_2, enabled, link, category) VALUES ('$oldName', '$oldCode', '$newName', '$newCode', '$enabled', '$e_link', '$category');";
     $result = mysqli_query($link, $sql);
     mysqli_close($link);
     ?>
@@ -36,5 +40,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         <input type="checkbox" checked name="enabled" value="enabled" id="label_enabled"><br>
         <label for="label_link">Ссылка в ешопе</label>
         <input type="text" name="e_link" id="label_link"><br>
+        <label for="label_category">Категория:</label>
+        <select name="category" id="label_category">
+            <option value="Мобильные телефоны" selected>Мобильные телефоны</option>
+        </select>
+        <br>
         <input type="submit" name="submit" value="go!">
     </form>

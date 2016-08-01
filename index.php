@@ -14,7 +14,7 @@
 <ul>
     <li><a href="add_item.php">Добавление позиции</a></li>
     <li><a href="test_item.php">Обработка базы</a></li>
-    <li><a href=""></a></li>
+    <li><a href="save_item.php">Сохранить базу</a></li>
     <li><a href=""></a></li>
     <li><a href=""></a></li>
 </ul>

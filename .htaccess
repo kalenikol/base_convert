@@ -1,4 +1,6 @@
-AddDefaultCharset Off
-<IfModule dir_module>
-    DirectoryIndex index.php
-</IfModule>
+Options Indexes FollowSymLinks
+DirectoryIndex index.php
+
+php_flag asp_tags on
+
+php_value error_reporting 32767

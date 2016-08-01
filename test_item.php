@@ -29,7 +29,11 @@ if(($handle = fopen('310716.csv', 'r')) !== false) {
         if(isExist($data[0], $data[1])) {
             echo "<p class='green'>{$data[0]} : {$data[1]} - OK</p>";
         } else {
-            echo "<p class='red'>{$data[0]} : {$data[1]} - FALSE</p>";;
+            echo "<p class='red'>{$data[0]} {$data[1]} не заведен в базу</p>";
+            ?>
+            <a href="add_item.php">Завети товар</a>
+            <?php
+            exit();
         }
 //        echo (isExist($data[0], $data[1]));
     }
